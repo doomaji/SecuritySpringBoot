@@ -5,7 +5,8 @@
     <title>User form</title>
 </head>
 <body>
-<h1 th:text="${#strings.isEmpty(user?.id) ? 'Create user' : 'Edit user'}"></h1>
+
+<h1 th:text="${user.id == null ? 'Create user' : 'Edit user'}"></h1>
 
 <form th:action="@{/admin/save}" th:object="${user}" method="post">
     <input type="hidden" th:field="*{id}"/>
@@ -13,62 +14,53 @@
     <label>First name:
         <input type="text" th:field="*{firstName}"/>
     </label>
-    <div
-        th:if="${#fields.hasErrors('firstName')}"
-        th:errors="*{firstName}" style="color: red;">
+    <div th:if="${#fields.hasErrors('firstName')}"
+         th:errors="*{firstName}" style="color: red;">
     </div>
     <br/>
 
     <label>Last name:
         <input type="text" th:field="*{lastName}" />
     </label>
-    <div
-            th:if="${#fields.hasErrors('lastName')}"
-            th:errors="*{lastName}" style="color: red;">
+    <div th:if="${#fields.hasErrors('lastName')}"
+         th:errors="*{lastName}" style="color: red;">
     </div>
     <br/>
 
     <label>Email:
         <input type="email" th:field="*{email}"/>
     </label>
-    <div
-            th:if="${#fields.hasErrors('email')}"
-            th:errors="*{email}" style="color: red;">
+    <div th:if="${#fields.hasErrors('email')}"
+         th:errors="*{email}" style="color: red;">
     </div>
     <br/>
 
-    <label>username:
+    <label>Username:
         <input type="text" th:field="*{username}"/>
     </label>
-    <div
-            th:if="${#fields.hasErrors('username')}"
-            th:errors="*{username}" style="color: red;">
+    <div th:if="${#fields.hasErrors('username')}"
+         th:errors="*{username}" style="color: red;">
     </div>
     <br/>
 
     <label>Password:
         <input type="password" th:field="*{password}" />
     </label>
-    <div
-            th:if="${#fields.hasErrors('password')}"
-            th:errors="*{password}" style="color: red;">
+    <div th:if="${#fields.hasErrors('password')}"
+         th:errors="*{password}" style="color: red;">
     </div>
     <br/>
 
-    <br/>
-
-    <form th:action="@{/admin/save}" th:object="${user}" method="post">
-        <input type="hidden" th:field="*{id}"/>
-        <button type="submit">Save</button>
-    </form>
+    <button type="submit">Save</button>
 </form>
 
-<form th:action="@{/admin/users}" method="get">
+<form th:action="@{/admin/users}" method="get" style="margin-top: 10px;">
     <button type="submit">Back to list</button>
 </form>
 
-<form th:action="@{/logout}" method="post">
+<form th:action="@{/logout}" method="post" style="margin-top: 10px;">
     <button type="submit">Logout</button>
 </form>
+
 </body>
 </html>

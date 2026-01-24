@@ -58,8 +58,8 @@ public class User implements UserDetails {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
         this.username = username;
+        this.password = password;
     }
 
     public String toString() {
@@ -113,6 +113,10 @@ public class User implements UserDetails {
         return username;
     }
 
+    public Set<Role> getRoles() { return roles; }
+
+    public void setRoles(Set<Role> roles) { this.roles = roles; }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -121,7 +125,4 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 }
